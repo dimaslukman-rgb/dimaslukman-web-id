@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimas Lukman Septiawan — Virtual Assistant Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nude: '#F5F0EB',
+                        'nude-dark': '#EDE5DB',
+                        chocolate: '#5F463E',
+                        'chocolate-light': '#7A5E54',
+                        'chocolate-dark': '#4A362F',
+                        cream: '#FFF9F4',
+                        sand: '#D4C5B5',
+                        'earth-brown': '#3D2B1F',
+                        'muted-brown': '#8B7355',
+                        'soft-gray': '#9B9189',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'arch': '50% 50% 0 0',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans overflow-hidden h-screen">
+
+    <!-- Slide Navigation Dots (Right Side) -->
+    <nav class="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3" id="slideNav">
+        <button class="slide-dot active" data-slide="0" aria-label="Hero"><span class="dot-label">Hero</span></button>
+        <button class="slide-dot" data-slide="1" aria-label="About"><span class="dot-label">About</span></button>
+        <button class="slide-dot" data-slide="2" aria-label="Background"><span class="dot-label">Background</span></button>
+        <button class="slide-dot" data-slide="3" aria-label="Skills"><span class="dot-label">Skills</span></button>
+        <button class="slide-dot" data-slide="4" aria-label="Services"><span class="dot-label">Services</span></button>
+        <button class="slide-dot" data-slide="5" aria-label="Showcase"><span class="dot-label">Showcase</span></button>
+        <button class="slide-dot" data-slide="6" aria-label="Dashboard"><span class="dot-label">Dashboard</span></button>
+        <button class="slide-dot" data-slide="7" aria-label="Contact"><span class="dot-label">Contact</span></button>
+    </nav>
+
+    <!-- Arrow Navigation -->
+    <button class="fixed top-6 left-1/2 -translate-x-1/2 z-50 arrow-btn" id="arrowUp" aria-label="Previous">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <button class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 arrow-btn" id="arrowDown" aria-label="Next">
+        <i class="fas fa-chevron-down"></i>
+    </button>
+
+    <!-- Slide Counter -->
+    <div class="fixed left-6 bottom-6 z-50 flex items-baseline gap-1 font-serif">
+        <span class="text-2xl font-bold text-chocolate" id="currentSlide">01</span>
+        <span class="text-soft-gray text-sm">/</span>
+        <span class="text-soft-gray text-sm" id="totalSlides">08</span>
+    </div>
+
+
+    <!-- ==================== SLIDE 1: HERO ==================== -->
+    <section class="slide active" id="slide-0">
+        <div class="absolute inset-0 bg-nude bg-texture"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 flex items-center min-h-screen">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
+                <!-- Left Content -->
+                <div class="order-2 lg:order-1">
+                    <!-- Social Icons -->
+                    <div class="flex gap-4 mb-8">
+                        <a href="https://linkedin.com/in/dimaslukman" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://upwork.com/freelancers/dimaslukmans" target="_blank" class="social-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </a>
+                        <a href="mailto:dimaslukman@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+628119547505" class="social-icon">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                    <!-- Name -->
+                    <h1 class="font-serif text-5xl lg:text-7xl font-bold text-earth-brown leading-tight mb-4">
+                        Dimas<br>Lukman<br>Septiawan
+                    </h1>
+                    <p class="text-muted-brown text-lg tracking-widest uppercase mb-8 font-light">
+                        Virtual Assistant · Data Entry · Admin Support
+                    </p>
+                    <a href="#slide-7" onclick="goToSlide(7); return false;" class="btn-pill">
+                        LET'S WORK TOGETHER
+                    </a>
+                </div>
+                <!-- Right: Profile Photo -->
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <div class="arch-frame">
+                        <img src="photo.jpg" alt="Dimas Lukman Septiawan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-sand\'><i class=\'fas fa-user text-6xl text-chocolate-light\'></i></div>'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 2: ABOUT ME ==================== -->
+    <section class="slide" id="slide-1">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 flex items-center min-h-screen">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full">
+                <!-- Left: Image + Title below -->
+                <div class="flex flex-col">
+                    <div class="about-image-container">
+                        <img src="photo.jpg" alt="About Dimas" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="bg-chocolate py-4 text-center">
+                        <h2 class="font-serif text-xl lg:text-2xl font-bold text-white tracking-widest uppercase">
+                            About Me
+                        </h2>
+                    </div>
+                </div>
+                <!-- Right: Content -->
+                <div class="flex flex-col justify-center p-8 lg:p-12">
+                    <h3 class="font-serif text-3xl lg:text-4xl font-bold text-earth-brown mb-6">
+                        Helping Business Owners<br>Save Time
+                    </h3>
+                    <p class="text-muted-brown leading-relaxed mb-8">
+                        I'm a dedicated Virtual Assistant specializing in data entry, email management, calendar coordination, and comprehensive admin support. With a commitment to <strong class="text-earth-brown">99% accuracy</strong> and fast turnaround, I help businesses streamline their operations and focus on growth.
+                    </p>
+                    <p class="text-muted-brown leading-relaxed mb-8">
+                        Open to long-term collaboration with clients who value reliability, precision, and professional excellence.
+                    </p>
+                    <div class="mb-8">
+                        <h4 class="font-serif text-xl font-semibold text-earth-brown mb-4">Specializations</h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <span class="spec-item"><i class="fas fa-check text-chocolate mr-2 text-xs"></i>Data Entry</span>
+                            <span class="spec-item"><i class="fas fa-check text-chocolate mr-2 text-xs"></i>Email Management</span>
+                            <span class="spec-item"><i class="fas fa-check text-chocolate mr-2 text-xs"></i>Lead Generation</span>
+                            <span class="spec-item"><i class="fas fa-check text-chocolate mr-2 text-xs"></i>CRM Management</span>
+                            <span class="spec-item"><i class="fas fa-check text-chocolate mr-2 text-xs"></i>Calendar Scheduling</span>
+                            <span class="spec-item"><i class="fas fa-check text-chocolate mr-2 text-xs"></i>Document Formatting</span>
+                        </div>
+                    </div>
+                    <a href="#slide-7" onclick="goToSlide(7); return false;" class="btn-pill self-start">
+                        WORK WITH ME
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 3: MY BACKGROUND ==================== -->
+    <section class="slide" id="slide-2">
+        <div class="absolute inset-0 bg-nude bg-texture"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 flex items-center min-h-screen">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+                <!-- Left: Education & Experience -->
+                <div>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold text-earth-brown mb-12">
+                        My Background
+                    </h2>
+                    
+                    <!-- Education -->
+                    <div class="mb-10">
+                        <h3 class="font-serif text-2xl font-semibold text-chocolate mb-4 flex items-center gap-3">
+                            <i class="fas fa-graduation-cap text-lg"></i> Education
+                        </h3>
+                        <div class="space-y-3 ml-1">
+                            <div class="flex items-start gap-3">
+                                <span class="text-chocolate mt-1 font-mono text-sm">↳</span>
+                                <div>
+                                    <p class="font-semibold text-earth-brown">Bachelor's Degree</p>
+                                    <p class="text-muted-brown text-sm">Relevant coursework in Business Administration & Computer Science</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-chocolate mt-1 font-mono text-sm">↳</span>
+                                <div>
+                                    <p class="font-semibold text-earth-brown">Professional Certifications</p>
+                                    <p class="text-muted-brown text-sm">Virtual Assistant, Google Workspace, Data Entry Specialist</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div>
+                        <h3 class="font-serif text-2xl font-semibold text-chocolate mb-4 flex items-center gap-3">
+                            <i class="fas fa-briefcase text-lg"></i> Work Experience
+                        </h3>
+                        <div class="space-y-3 ml-1">
+                            <div class="flex items-start gap-3">
+                                <span class="text-chocolate mt-1 font-mono text-sm">↳</span>
+                                <div>
+                                    <p class="font-semibold text-earth-brown">Freelance Virtual Assistant</p>
+                                    <p class="text-muted-brown text-sm">Providing admin support, data entry, and email management for international clients</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-chocolate mt-1 font-mono text-sm">↳</span>
+                                <div>
+                                    <p class="font-semibold text-earth-brown">Data Entry Specialist</p>
+                                    <p class="text-muted-brown text-sm">Processed 500+ records with 99% accuracy across multiple projects</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-chocolate mt-1 font-mono text-sm">↳</span>
+                                <div>
+                                    <p class="font-semibold text-earth-brown">Lead Generation Assistant</p>
+                                    <p class="text-muted-brown text-sm">Identified 200+ verified prospects with 95% contact accuracy rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Arch image -->
+                <div class="flex justify-center">
+                    <div class="arch-frame arch-frame-sm">
+                        <div class="w-full h-full bg-sand flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <i class="fas fa-laptop-code text-6xl text-chocolate mb-6"></i>
+                                <p class="font-serif text-xl text-chocolate font-semibold">Professional<br>Workspace</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 4: PERSONAL SKILLS ==================== -->
+    <section class="slide" id="slide-3">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 flex flex-col justify-center min-h-screen">
+            <h2 class="font-serif text-4xl lg:text-5xl font-bold text-earth-brown text-center mb-4">
+                Personal Skills
+            </h2>
+            <p class="text-muted-brown text-center mb-12">Professional competencies refined through hands-on experience</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Core Skills -->
+                <div class="skill-category">
+                    <h3 class="skill-badge">Core Skills</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-stars">★★★★★</span> Attention to Detail</li>
+                        <li><span class="skill-stars">★★★★★</span> Time Management</li>
+                        <li><span class="skill-stars">★★★★★</span> Communication</li>
+                        <li><span class="skill-stars">★★★★★</span> Data Management</li>
+                        <li><span class="skill-stars">★★★★☆</span> Problem Solving</li>
+                    </ul>
+                </div>
+
+                <!-- Data & Research -->
+                <div class="skill-category">
+                    <h3 class="skill-badge">Data & Research</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-stars">★★★★★</span> Internet Research</li>
+                        <li><span class="skill-stars">★★★★★</span> Google Sheets</li>
+                        <li><span class="skill-stars">★★★★☆</span> Lead Generation</li>
+                        <li><span class="skill-stars">★★★★★</span> Data Cleaning</li>
+                        <li><span class="skill-stars">★★★★★</span> Data Validation</li>
+                    </ul>
+                </div>
+
+                <!-- Admin Support -->
+                <div class="skill-category">
+                    <h3 class="skill-badge">Admin Support</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-stars">★★★★★</span> Email Management</li>
+                        <li><span class="skill-stars">★★★★★</span> Calendar Management</li>
+                        <li><span class="skill-stars">★★★★★</span> Document Formatting</li>
+                        <li><span class="skill-stars">★★★★★</span> File Organization</li>
+                        <li><span class="skill-stars">★★★★★</span> Task Tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Customer & CRM -->
+                <div class="skill-category">
+                    <h3 class="skill-badge">Customer & CRM</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-stars">★★★★★</span> Email Support</li>
+                        <li><span class="skill-stars">★★★★☆</span> Customer Support</li>
+                        <li><span class="skill-stars">★★★★★</span> CRM Management</li>
+                        <li><span class="skill-stars">★★★★☆</span> Appointment Setting</li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-category">
+                    <h3 class="skill-badge">Software & Tools</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-stars">★★★★★</span> Google Workspace</li>
+                        <li><span class="skill-stars">★★★★★</span> Microsoft Office</li>
+                        <li><span class="skill-stars">★★★★★</span> Canva & Notion</li>
+                        <li><span class="skill-stars">★★★★☆</span> Trello & Asana</li>
+                    </ul>
+                </div>
+
+                <!-- AI Tools -->
+                <div class="skill-category">
+                    <h3 class="skill-badge">AI Tools</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-stars">★★★★★</span> ChatGPT</li>
+                        <li><span class="skill-stars">★★★★★</span> Gemini AI</li>
+                        <li><span class="skill-stars">★★★★☆</span> AI-Assisted Research</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 5: SERVICES ==================== -->
+    <section class="slide" id="slide-4">
+        <div class="absolute inset-0 bg-nude bg-texture"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 flex flex-col justify-center min-h-screen">
+            <h2 class="font-serif text-6xl lg:text-8xl font-bold text-chocolate/10 text-center mb-[-20px] select-none">
+                SERVICES
+            </h2>
+            <h3 class="font-serif text-3xl lg:text-4xl font-bold text-earth-brown text-center mb-12">
+                What I Can Do For You
+            </h3>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+                <div class="service-card">
+                    <i class="fas fa-keyboard text-chocolate text-xl mb-3"></i>
+                    <h4>Data Entry</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-envelope text-chocolate text-xl mb-3"></i>
+                    <h4>Email Management</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-alt text-chocolate text-xl mb-3"></i>
+                    <h4>Calendar Management</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-alt text-chocolate text-xl mb-3"></i>
+                    <h4>Document Formatting</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-globe text-chocolate text-xl mb-3"></i>
+                    <h4>Online Research</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-folder-open text-chocolate text-xl mb-3"></i>
+                    <h4>File Organization</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-funnel-dollar text-chocolate text-xl mb-3"></i>
+                    <h4>Lead Generation</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-address-book text-chocolate text-xl mb-3"></i>
+                    <h4>CRM Management</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-headset text-chocolate text-xl mb-3"></i>
+                    <h4>Customer Support</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chart-bar text-chocolate text-xl mb-3"></i>
+                    <h4>Sheets Dashboard</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-broom text-chocolate text-xl mb-3"></i>
+                    <h4>Data Cleaning</h4>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-phone-alt text-chocolate text-xl mb-3"></i>
+                    <h4>Appointment Setting</h4>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#slide-7" onclick="goToSlide(7); return false;" class="btn-pill">
+                    BOOK A FREE CALL WITH ME
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 6: PROJECT SHOWCASE ==================== -->
+    <section class="slide" id="slide-5">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 flex flex-col justify-center min-h-screen">
+            <h2 class="font-serif text-4xl lg:text-5xl font-bold text-earth-brown text-center mb-4">
+                Project Showcase
+            </h2>
+            <p class="text-muted-brown text-center mb-12">Real results delivered for real clients</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Email & File Organization -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-inbox text-2xl text-chocolate"></i>
+                        <h3>Email & File Organization</h3>
+                    </div>
+                    <p class="text-muted-brown text-sm mb-4">Successfully organized client inboxes, created structured filing systems, and maintained accurate lead databases.</p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-val">98%</span><span class="metric-lbl">Accuracy</span></div>
+                        <div class="metric"><span class="metric-val">10+</span><span class="metric-lbl">Labels Created</span></div>
+                        <div class="metric"><span class="metric-val">Same Day</span><span class="metric-lbl">Completion</span></div>
+                    </div>
+                </div>
+
+                <!-- Lead Generation -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-users text-2xl text-chocolate"></i>
+                        <h3>Lead Generation</h3>
+                    </div>
+                    <p class="text-muted-brown text-sm mb-4">Identified and verified prospects through systematic research and data collection.</p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-val">200+</span><span class="metric-lbl">Prospects</span></div>
+                        <div class="metric"><span class="metric-val">95%</span><span class="metric-lbl">Verified Rate</span></div>
+                    </div>
+                </div>
+
+                <!-- Data Entry -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-database text-2xl text-chocolate"></i>
+                        <h3>Data Entry & Spreadsheets</h3>
+                    </div>
+                    <p class="text-muted-brown text-sm mb-4">Google Sheets & Excel management with structured data entry workflows and clean formatting.</p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-val">99%</span><span class="metric-lbl">Accuracy</span></div>
+                        <div class="metric"><span class="metric-val">100+</span><span class="metric-lbl">Records</span></div>
+                        <div class="metric"><span class="metric-val">97%</span><span class="metric-lbl">Consistency</span></div>
+                    </div>
+                </div>
+
+                <!-- Calendar Scheduling -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-calendar-check text-2xl text-chocolate"></i>
+                        <h3>Calendar & Scheduling</h3>
+                    </div>
+                    <p class="text-muted-brown text-sm mb-4">Managed multiple calendars and coordinated meetings across different time zones.</p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-val">99%</span><span class="metric-lbl">Accuracy</span></div>
+                        <div class="metric"><span class="metric-val">100%</span><span class="metric-lbl">Reminders</span></div>
+                        <div class="metric"><span class="metric-val">0-1%</span><span class="metric-lbl">Double Book</span></div>
+                    </div>
+                </div>
+
+                <!-- CRM Data Entry -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-users-cog text-2xl text-chocolate"></i>
+                        <h3>CRM Management</h3>
+                    </div>
+                    <p class="text-muted-brown text-sm mb-4">Maintained CRM databases with accurate contact info, notes, and follow-up tracking.</p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-val">100+</span><span class="metric-lbl">Contacts</span></div>
+                        <div class="metric"><span class="metric-val">99%</span><span class="metric-lbl">Data Quality</span></div>
+                    </div>
+                </div>
+
+                <!-- Email Marketing -->
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-mail-bulk text-2xl text-chocolate"></i>
+                        <h3>Email Marketing</h3>
+                    </div>
+                    <p class="text-muted-brown text-sm mb-4">Supported email campaigns with list management, template formatting, and performance tracking.</p>
+                    <div class="project-metrics">
+                        <div class="metric"><span class="metric-val">10+</span><span class="metric-lbl">Campaigns</span></div>
+                        <div class="metric"><span class="metric-val">Same Day</span><span class="metric-lbl">Turnaround</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 7: PERFORMANCE DASHBOARD ==================== -->
+    <section class="slide" id="slide-6">
+        <div class="absolute inset-0 bg-nude bg-texture"></div>
+        <div class="relative z-10 w-full max-w-5xl mx-auto px-8 py-16 flex flex-col justify-center min-h-screen">
+            <h2 class="font-serif text-4xl lg:text-5xl font-bold text-earth-brown text-center mb-4">
+                Performance Dashboard
+            </h2>
+            <p class="text-muted-brown text-center mb-12">Key performance indicators across all admin support tasks</p>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="dash-card">
+                    <i class="fas fa-database text-3xl text-chocolate mb-4"></i>
+                    <div class="font-serif text-4xl font-bold text-earth-brown dash-num" data-target="500">0</div>
+                    <div class="text-soft-gray text-sm mt-1">Records Managed</div>
+                    <span class="text-chocolate font-bold">+</span>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-file-alt text-3xl text-chocolate mb-4"></i>
+                    <div class="font-serif text-4xl font-bold text-earth-brown dash-num" data-target="100">0</div>
+                    <div class="text-soft-gray text-sm mt-1">Documents Organized</div>
+                    <span class="text-chocolate font-bold">+</span>
+                </div>
+                <div class="dash-card">
+                    <i class="fas fa-clock text-3xl text-chocolate mb-4"></i>
+                    <div class="font-serif text-4xl font-bold text-earth-brown dash-num" data-target="50">0</div>
+                    <div class="text-soft-gray text-sm mt-1">Hours Admin Support</div>
+                    <span class="text-chocolate font-bold">+</span>
+                </div>
+                <div class="dash-card dash-card-accent">
+                    <i class="fas fa-bullseye text-3xl text-chocolate mb-4"></i>
+                    <div class="font-serif text-4xl font-bold text-chocolate dash-num" data-target="99">0</div>
+                    <div class="text-soft-gray text-sm mt-1">Data Accuracy</div>
+                    <span class="text-chocolate font-bold">%</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center max-w-2xl mx-auto">
+                <i class="fas fa-quote-left text-3xl text-chocolate/20 mb-4"></i>
+                <blockquote class="font-serif text-lg text-muted-brown italic leading-relaxed mb-4">
+                    "Consistent accuracy, fast turnaround, and meticulous organization — every metric reflects a commitment to excellence in every task delivered."
+                </blockquote>
+                <cite class="text-chocolate text-sm font-semibold not-italic">
+                    linkedin.com/in/dimaslukman
+                </cite>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SLIDE 8: CONTACT FOOTER ==================== -->
+    <section class="slide" id="slide-7">
+        <div class="absolute inset-0 bg-white"></div>
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-8 py-16 flex items-center min-h-screen">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+                <!-- Left: Profile + Badge -->
+                <div class="flex flex-col items-center">
+                    <div class="arch-frame arch-frame-sm mb-6">
+                        <img src="photo.jpg" alt="Dimas Lukman" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-sand\'><i class=\'fas fa-user text-6xl text-chocolate-light\'></i></div>'">
+                    </div>
+                    <div class="bg-sand rounded-xl px-6 py-3 text-center">
+                        <p class="font-serif font-bold text-earth-brown">Dimas Lukman Septiawan</p>
+                        <p class="text-muted-brown text-sm">Virtual Assistant · Data Entry · Admin Support</p>
+                    </div>
+                    <p class="flex items-center gap-2 text-green-700 font-semibold text-sm mt-4">
+                        <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                        Available for Freelance Projects
+                    </p>
+                </div>
+
+                <!-- Right: Contact Info -->
+                <div>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold text-earth-brown mb-2">
+                        Connect<br>with me!
+                    </h2>
+                    <p class="text-muted-brown mb-8">
+                        <i class="fas fa-clock mr-2 text-chocolate"></i>Response Time: Within 24 Hours
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <a href="mailto:dimaslukman@gmail.com" class="contact-link-item">
+                            <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <span class="text-soft-gray text-xs uppercase tracking-wider">Email</span>
+                                <p class="text-earth-brown font-semibold">dimaslukman@gmail.com</p>
+                            </div>
+                        </a>
+                        <a href="tel:+628119547505" class="contact-link-item">
+                            <div class="contact-link-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <span class="text-soft-gray text-xs uppercase tracking-wider">Phone</span>
+                                <p class="text-earth-brown font-semibold">+62 811-9547-505</p>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/dimaslukman" target="_blank" class="contact-link-item">
+                            <div class="contact-link-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div>
+                                <span class="text-soft-gray text-xs uppercase tracking-wider">LinkedIn</span>
+                                <p class="text-earth-brown font-semibold">linkedin.com/in/dimaslukman</p>
+                            </div>
+                        </a>
+                        <a href="https://upwork.com/freelancers/dimaslukmans" target="_blank" class="contact-link-item">
+                            <div class="contact-link-icon"><i class="fas fa-briefcase"></i></div>
+                            <div>
+                                <span class="text-soft-gray text-xs uppercase tracking-wider">Upwork</span>
+                                <p class="text-earth-brown font-semibold">upwork.com/freelancers/dimaslukmans</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex gap-3">
+                        <a href="https://linkedin.com/in/dimaslukman" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://upwork.com/freelancers/dimaslukmans" target="_blank" class="social-icon"><i class="fas fa-briefcase"></i></a>
+                        <a href="mailto:dimaslukman@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+628119547505" class="social-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
