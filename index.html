@@ -1,294 +1,572 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dimas Lukman Septiawan — Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'media',
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#0f172a',
-                        darkCard: '#1e293b',
-                        darkText: '#94a3b8',
-                        darkHeading: '#f8fafc',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- GSAP for scroll and entry animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Dimas Lukman — Operations Support & Data Specialist | Bot Developer</title>
+<meta name="description" content="Portofolio Dimas Lukman — Operations Support & Data Specialist dan Bot Developer. 12 tahun pengalaman operations & data, spreadsheet automation, KPI dashboard, dan Python automation.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F7; --ink:#0F172A; --muted:#475569; --muted2:#334155;
+  --line:rgba(255,255,255,.68); --line-dark:rgba(15,23,42,.08);
+  --glass:rgba(255,255,255,.55); --glass-strong:rgba(255,255,255,.78); --glass-soft:rgba(255,255,255,.42);
+  --accent:#2563EB; --accent2:#0EA5E9; --green:#16A34A;
+  --radius:24px; --radius-lg:28px;
+  --shadow:0 20px 50px rgba(15,23,42,.10), inset 0 1px 0 rgba(255,255,255,.9);
+  --shadow-sm:0 10px 30px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.85);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:#BFDBFE;color:#1E3A8A}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.bg-mesh{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(640px 420px at 8% 6%,#A8D8FF 0%,transparent 62%),
+  radial-gradient(520px 360px at 92% 12%,#FFC8DD 0%,transparent 62%),
+  radial-gradient(580px 420px at 88% 88%,#BDB2FF 0%,transparent 62%),
+  radial-gradient(520px 360px at 12% 92%,#A2D2FF 0%,transparent 62%),var(--bg)}
+.bg-mesh::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 50% 38%,rgba(255,255,255,.35),transparent 70%)}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.15;letter-spacing:-.02em}
+a{color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:84px 0}
+.glass{background:var(--glass);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.eyebrow::before{content:"";width:22px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px}
+.section-title{font-size:clamp(30px,4vw,40px);font-weight:800;margin-bottom:12px}
+.section-sub{color:var(--muted);max-width:660px;margin-bottom:40px;font-size:16.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);cursor:pointer;transition:transform .2s, box-shadow .2s, background .2s;font-family:inherit;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;box-shadow:0 12px 30px rgba(37,99,235,.32)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(37,99,235,.38)}
+.btn-glass{background:var(--glass-strong);color:var(--ink);backdrop-filter:blur(16px)}
+.btn-glass:hover{transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:#fff;border:none}
+.btn-dark:hover{transform:translateY(-2px)}
+
+/* NAV */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1160px,calc(100% - 28px));z-index:100;padding:10px 12px 10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:999px;background:var(--glass-strong);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--line);box-shadow:var(--shadow)}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px;text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:10px}
+.logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:grid;place-items:center;font-size:13px;letter-spacing:.02em;flex:none}
+.logo>span:last-child{color:var(--accent)}
+.logo .logo-mark{color:#fff}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:14px;padding:10px 14px;border-radius:999px;transition:.2s;display:inline-flex;min-height:40px;align-items:center}
+.nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.95);color:var(--ink);box-shadow:0 4px 14px rgba(15,23,42,.06)}
+.nav-cta{display:inline-flex;min-height:40px;align-items:center;padding:9px 18px!important;background:var(--ink)!important;color:#fff!important;font-weight:600!important}
+.burger{display:none;background:rgba(255,255,255,.8);border:1px solid var(--line);width:44px;height:44px;border-radius:999px;cursor:pointer;place-items:center;flex:none}
+.burger svg{width:20px;height:20px}
+
+/* HERO */
+.hero{padding:158px 0 28px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;font-size:13.5px;font-weight:600;margin-bottom:26px;color:var(--muted2)}
+.dot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 5px rgba(34,197,94,.18);flex:none}
+.avatar{width:118px;height:118px;margin:0 auto 26px;border-radius:34px;display:grid;place-items:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:42px;letter-spacing:-.02em;color:#fff;background:linear-gradient(135deg,#2563EB,#0EA5E9 55%,#38BDF8);border:3px solid rgba(255,255,255,.85);box-shadow:0 24px 50px rgba(37,99,235,.28), inset 0 1px 0 rgba(255,255,255,.5)}
+.hero h1{font-size:clamp(42px,7vw,70px);font-weight:800;margin-bottom:16px;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.4vw,21px);color:var(--ink);max-width:760px;margin:0 auto 12px;line-height:1.4}
+.role-sub{font-size:16.5px;color:var(--muted);max-width:700px;margin:0 auto 34px}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.hero-links{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.hero-links a{font-size:13.5px;font-weight:600;color:var(--muted2);text-decoration:none;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.5);border:1px solid var(--line);backdrop-filter:blur(12px);min-height:38px;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.hero-links a:hover{background:#fff;color:var(--accent);transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:0 auto}
+.stat{padding:24px 14px 20px;border-radius:22px}
+.stat b{font-family:'Plus Jakarta Sans',sans-serif;font-size:32px;display:block;line-height:1;letter-spacing:-.03em}
+.stat b i{font-style:normal;color:var(--accent)}
+.stat span{font-size:13.5px;color:var(--muted);font-weight:500;display:block;margin-top:8px;line-height:1.4}
+
+/* MARQUEE */
+.marquee-wrap{padding-top:34px}
+.marquee{overflow:hidden;padding:16px 0;border-radius:999px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;gap:0;width:max-content;animation:scroll 26s linear infinite}
+.marquee-track span{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14.5px;color:var(--muted2);white-space:nowrap;padding:0 22px;display:flex;align-items:center;gap:44px}
+.marquee-track span::after{content:"✦";color:var(--accent2);font-size:12px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* BENTO */
+.bento{display:grid;grid-template-columns:1.9fr 1fr;gap:16px}
+.card{padding:32px}
+.card h3{font-size:20px;margin-bottom:10px;letter-spacing:-.02em}
+.card p{color:var(--muted);font-size:15.5px}
+.card p+p{margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted2);display:inline-flex;align-items:center;gap:6px;min-height:34px}
+.chip svg{width:14px;height:14px;flex:none}
+.values{list-style:none;display:grid;gap:12px;margin-top:4px}
+.values li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:var(--muted2);font-weight:500}
+.check{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:grid;place-items:center;flex:none;margin-top:1px}
+.check svg{width:12px;height:12px}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:30px;max-width:880px}
+.timeline::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;border-radius:99px;background:linear-gradient(var(--accent),var(--accent2),rgba(14,165,233,.15))}
+.t-item{position:relative;padding:28px 30px;margin-bottom:16px;border-radius:var(--radius)}
+.t-item::before{content:"";position:absolute;left:-29px;top:34px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 0 0 5px rgba(37,99,235,.12)}
+.t-item h3{font-size:19px}
+.t-meta{color:var(--accent);font-weight:700;font-size:13.5px;margin:5px 0 10px;letter-spacing:.01em}
+.t-item p,.t-item li{color:var(--muted);font-size:15px}
+.t-item ul{padding-left:18px;margin-top:8px;display:grid;gap:4px}
+.t-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.t-tags span{font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(37,99,235,.08);color:#1D4ED8;border:1px solid rgba(37,99,235,.12)}
+
+/* SKILLS */
+.skills{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px}
+.skill{padding:28px}
+.skill> b{font-family:'Plus Jakarta Sans',sans-serif;font-size:16.5px;display:block;margin-bottom:18px;letter-spacing:-.01em}
+.bar-row{margin-bottom:16px}
+.bar-row:last-child{margin-bottom:0}
+.skill small{display:flex;justify-content:space-between;color:var(--muted2);font-size:13.5px;font-weight:600;margin-bottom:7px}
+.skill small span:last-child{color:var(--accent);font-weight:700}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.75);border:1px solid rgba(15,23,42,.05);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.skill .chips{margin-top:2px}
+.skill-note{font-size:13.5px;color:var(--muted);margin-top:16px;line-height:1.55}
+
+/* PORTFOLIO */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filter{min-height:44px;padding:10px 22px;border-radius:999px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);cursor:pointer;font-weight:600;font-size:14px;font-family:inherit;color:var(--muted2);transition:.2s}
+.filter:hover{background:rgba(255,255,255,.9)}
+.filter.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.project{overflow:hidden;transition:transform .3s, box-shadow .3s;border-radius:var(--radius);display:flex;flex-direction:column}
+.project:hover{transform:translateY(-6px)}
+.thumb{height:168px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:#fff;position:relative;overflow:hidden}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.18))}
+.thumb-cat{position:relative;z-index:1;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.92}
+.thumb-title{position:relative;z-index:1;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:21px;line-height:1.2;letter-spacing:-.02em;margin-top:4px}
+.p-body{padding:22px;display:flex;flex-direction:column;gap:0;flex:1}
+.p-body p{color:var(--muted);font-size:14.5px;margin-bottom:16px;flex:1}
+.p-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.p-meta span{font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.75);border:1px solid var(--line);color:var(--muted2)}
+.p-link{color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;min-height:36px}
+.p-link:hover{text-decoration:underline}
+.hidden{display:none!important}
+
+/* GRID 3 */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;margin-bottom:18px;box-shadow:0 10px 22px rgba(37,99,235,.25)}
+.icon svg{width:24px;height:24px}
+.card .price{margin-top:16px;padding-top:16px;border-top:1px solid var(--line-dark);font-size:13.5px;color:var(--muted)}
+.card .price b{color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif}
+
+/* UPWORK PROOF */
+.upwork-band{padding:34px;display:grid;grid-template-columns:1.2fr 2fr;gap:28px;align-items:center}
+.upwork-band h3{font-size:22px;margin-bottom:8px}
+.upwork-band p{color:var(--muted);font-size:15px}
+.upwork-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.u-stat{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:18px;padding:18px 14px;text-align:center}
+.u-stat b{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;display:block;line-height:1.1}
+.u-stat span{font-size:12.5px;color:var(--muted);font-weight:500;display:block;margin-top:6px;line-height:1.35}
+.stars{color:#F59E0B;letter-spacing:2px;font-size:15px}
+
+/* CONTACT */
+.contact{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;align-items:start}
+.contact-list{display:grid;gap:10px;margin-top:20px}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.62);border:1px solid var(--line);text-decoration:none;transition:.2s;min-height:56px}
+.contact-item:hover{background:#fff;transform:translateX(3px)}
+.contact-item .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:none}
+.contact-item .ic svg{width:19px;height:19px}
+.contact-item b{font-size:14.5px;display:block;line-height:1.3}
+.contact-item small{color:var(--muted);font-size:12.5px;display:block}
+.contact-item .arr{margin-left:auto;color:var(--muted);flex:none}
+.email-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.email-box{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.8);border:1px solid var(--line);font-weight:600;font-size:14.5px;word-break:break-all}
+form{display:grid;gap:12px}
+label{font-size:13.5px;font-weight:600;color:var(--muted2);display:block;margin-bottom:-6px}
+input,textarea,select{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.78);font-family:inherit;font-size:15px;color:var(--ink);min-height:48px}
+textarea{resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+input::placeholder,textarea::placeholder{color:#94A3B8}
+.form-note{font-size:13.5px;color:var(--muted)}
+footer{padding:36px 0 44px;text-align:center;color:var(--muted);font-size:14px}
+footer .foot-links{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer .foot-links a{color:var(--muted2);font-weight:600;text-decoration:none;padding:8px 14px;border-radius:999px;min-height:36px;display:inline-flex;align-items:center}
+footer .foot-links a:hover{color:var(--accent);background:rgba(255,255,255,.7)}
+footer a.brand{color:var(--accent);font-weight:700;text-decoration:none}
+/* Konten selalu terlihat — tanpa status tersembunyi, agar semua kontrol
+   langsung bisa dioperasikan di semua perangkat (termasuk tanpa scroll). */
+.reveal,.js .reveal,.js .reveal.show{opacity:1;transform:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:999px;font-size:14px;font-weight:600;z-index:200;transition:transform .35s ease;box-shadow:0 16px 40px rgba(15,23,42,.3);pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.js .reveal{opacity:1!important;transform:none!important}.marquee-track{flex-wrap:wrap;width:auto}}
+@media(max-width:1024px){.skills{grid-template-columns:1fr 1fr}.skills .skill:first-child{grid-column:1/-1}.projects{grid-template-columns:1fr 1fr}.upwork-band{grid-template-columns:1fr}}
+@media(max-width:900px){.bento,.contact{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  section{padding:60px 0}.hero{padding:132px 0 16px}
+  .skills,.projects,.grid3,.stats{grid-template-columns:1fr}
+  .upwork-stats{grid-template-columns:1fr 1fr}
+  .nav-links{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;align-items:stretch;background:var(--glass-strong);backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--line);border-radius:22px;padding:10px;box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:13px 16px;min-height:48px}
+  .nav-cta{text-align:center;justify-content:center;margin-top:4px}
+  .burger{display:grid}
+  .card{padding:26px}.t-item{padding:24px 22px}.upwork-band{padding:26px}
+  .hero-cta .btn{width:100%}
+  .stats{gap:10px}.stat b{font-size:28px}
+}
+</style>
 </head>
-<body class="transition-colors duration-300 dark:bg-darkBg dark:text-darkText bg-white text-gray-700">
+<body>
+<div class="bg-mesh" aria-hidden="true"></div>
 
-    <!-- Header / Navigation -->
-    <header class="w-full sticky top-0 bg-white/80 dark:bg-darkBg/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-slate-800">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold text-xl tracking-tight text-gradient">Dimas.L</a>
+<nav aria-label="Navigasi utama">
+  <a class="logo" href="#beranda"><span class="logo-mark">DL</span>Dimas<span style="margin-left:-10px">.</span></a>
+  <ul class="nav-links" id="menu">
+    <li><a href="#beranda" class="active">Beranda</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#pengalaman">Pengalaman</a></li>
+    <li><a href="#keahlian">Keahlian</a></li>
+    <li><a href="#portofolio">Portofolio</a></li>
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#kontak" class="nav-cta">Hubungi Saya</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</nav>
 
-            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
-                <a href="#home" class="hover:text-slate-900 dark:hover:text-white transition-custom">Home</a>
-                <a href="#about" class="hover:text-slate-900 dark:hover:text-white transition-custom">About</a>
-                <a href="#technologies" class="hover:text-slate-900 dark:hover:text-white transition-custom">Technologies</a>
-                <a href="#projects" class="hover:text-slate-900 dark:hover:text-white transition-custom">Projects</a>
-                <a href="#contact" class="hover:text-slate-900 dark:hover:text-white transition-custom">Contact</a>
-            </nav>
+<header class="hero" id="beranda">
+  <div class="container">
+    <div class="badge glass reveal"><span class="dot"></span> Terbuka untuk proyek &amp; kolaborasi baru</div>
+    <div class="avatar reveal" aria-hidden="true">DL</div>
+    <h1 class="reveal">Halo, saya <em>Dimas Lukman</em></h1>
+    <p class="role reveal">Operations Support &amp; Data Specialist <span style="color:var(--accent2)">|</span> Bot Developer</p>
+    <p class="role-sub reveal">12 tahun pengalaman di operations support &amp; data — dari field operations dan fiber optic rollouts hingga memimpin tim teknis 20+ personel. Sekarang saya bantu bisnis mengotomatiskan pekerjaan data yang berulang lewat spreadsheet automation, KPI dashboard, dan bot Python.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="#portofolio">Lihat Portofolio
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-glass" href="https://wa.me/628119547505" target="_blank" rel="noopener">Chat WhatsApp</a>
+      <a class="btn btn-glass" href="https://www.linkedin.com/in/dimaslukman/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <div class="hero-links reveal" aria-label="Profil online">
+      <a href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Upwork — Rising Talent</a>
+      <a href="https://github.com/dimaslukman-rgb" target="_blank" rel="noopener">GitHub — dimaslukman-rgb</a>
+      <a href="https://t.me/odiiiiii" target="_blank" rel="noopener">Telegram — @odiiiiii</a>
+      <a href="https://lynk.id/dunia5.0" target="_blank" rel="noopener">lynk.id/dunia5.0</a>
+    </div>
+    <div class="stats reveal">
+      <div class="stat glass"><b>12<i>+</i></b><span>Tahun Pengalaman<br>Operations &amp; Data</span></div>
+      <div class="stat glass"><b>20<i>+</i></b><span>Personel Teknis<br>Pernah Dipimpin</span></div>
+      <div class="stat glass"><b>7</b><span>Item Portofolio<br>di Upwork</span></div>
+    </div>
+  </div>
+</header>
 
-            <div class="flex items-center space-x-4">
-                <a href="https://linkedin.com/in/dimaslukman" target="_blank" class="text-gray-500 hover:text-slate-900 dark:hover:text-white transition-custom">
-                    <i class="fab fa-linkedin text-xl"></i>
-                </a>
-                <a href="https://upwork.com/freelancers/dimaslukmans" target="_blank" class="text-gray-500 hover:text-slate-900 dark:hover:text-white transition-custom">
-                    <i class="fas fa-briefcase text-xl"></i>
-                </a>
-            </div>
-        </div>
-    </header>
+<div class="container marquee-wrap"><div class="marquee glass" aria-label="Keahlian inti">
+  <div class="marquee-track" id="track"></div>
+</div></div>
 
-    <!-- Main Content wrapper -->
-    <main class="max-w-6xl mx-auto px-6 py-12 space-y-28 md:space-y-36">
+<section id="tentang"><div class="container">
+  <span class="eyebrow">Tentang Saya</span>
+  <h2 class="section-title">Kenalan Dulu, Yuk</h2>
+  <p class="section-sub">Kombinasi langka: paham operasi di lapangan, rapi di data, dan bisa membangun alat otomasi sendiri.</p>
+  <div class="bento">
+    <article class="card glass reveal">
+      <h3>Siapa Saya</h3>
+      <p>Saya Dimas Lukman Septiawan, Operations Support &amp; Data Specialist dengan 12 tahun pengalaman di operations support &amp; data — mencakup field operations, fiber optic rollouts, dan memimpin tim teknis beranggotakan 20+ personel. Saya memegang sertifikasi profesional di bidang installation technology dan project management.</p>
+      <p>Spesialisasi saya adalah spreadsheet automation, KPI dashboards, dan Python monitoring: mengubah data operasional yang berantakan menjadi laporan yang jernih dan bisa langsung dipakai untuk mengambil keputusan. Belakangan ini saya juga menekuni bot development &amp; automation secara intensif — membangun bot Telegram, web scraper, dan script otomasi untuk klien freelance.</p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg> Indonesia</span>
+        <span class="chip">Terbuka untuk proyek freelance</span>
+        <span class="chip">Rising Talent di Upwork</span>
+      </div>
+    </article>
+    <article class="card glass reveal">
+      <h3>Cara Saya Bekerja</h3>
+      <ul class="values">
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span> Transparan — progres dan kendala disampaikan apa adanya</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span> Rapi &amp; terdokumentasi — file, data, dan hasil mudah diteruskan</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span> Fokus hasil — otomasi yang benar-benar menghemat waktu tim</li>
+        <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span> Berpengalaman memimpin — terbiasa koordinasi tim lapangan 20+ orang</li>
+      </ul>
+      <a class="btn btn-primary" style="margin-top:22px;width:100%" href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Lihat Profil Upwork ↗</a>
+    </article>
+  </div>
+</div></section>
 
-        <!-- ==================== HERO SECTION ==================== -->
-        <section id="home" class="flex flex-col md:flex-row items-center justify-between py-12 md:py-24 gap-12 overflow-hidden">
-            <div class="space-y-6 md:w-3/5 text-center md:text-left js-animate-left">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-darkHeading leading-tight">
-                    Hi, 👋 <br>
-                    My Name is <br>
-                    <span class="text-gradient">Dimas Lukman Septiawan</span>
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-slate-300">
-                    I optimize operations & manage data quality
-                </h2>
-                <p class="text-lg text-gray-500 dark:text-darkText max-w-lg">
-                    A freelance Virtual Assistant specializing in data entry, email logistics, and calendar coordination. Committed to <strong class="text-gray-900 dark:text-white">99% accuracy</strong> and seamless operations.
-                </p>
-                <div class="pt-4">
-                    <a href="#contact" class="px-6 py-3 rounded-lg text-white font-semibold transition-custom bg-gradient-to-r from-sky-500 via-purple-500 to-pink-600 hover:opacity-90 inline-block shadow-md">
-                        Let's Work Together
-                    </a>
-                </div>
-            </div>
+<section id="pengalaman" style="padding-top:20px"><div class="container">
+  <span class="eyebrow">Perjalanan Karier</span>
+  <h2 class="section-title">Pengalaman</h2>
+  <p class="section-sub">Dua belas tahun membangun fondasi operasi &amp; data, kini diperluas ke otomasi dan pengembangan bot.</p>
+  <div class="timeline">
+    <article class="t-item glass reveal">
+      <h3>Operations Support &amp; Data Specialist</h3>
+      <div class="t-meta">Operations Support &amp; Data • 12 Tahun Pengalaman</div>
+      <p>Fondasi karier saya: mendukung operasi harian berbasis data, dari lapangan sampai laporan manajemen.</p>
+      <ul>
+        <li>Field operations dan fiber optic rollouts — memastikan pekerjaan lapangan berjalan sesuai target dan tercatat rapi</li>
+        <li>Memimpin tim teknis beranggotakan 20+ personel</li>
+        <li>Membangun spreadsheet automation dan KPI dashboard untuk memantau performa operasi</li>
+        <li>Python monitoring untuk membantu pengawasan dan pelaporan berkala</li>
+      </ul>
+      <div class="t-tags"><span>Sertifikasi Installation Technology</span><span>Sertifikasi Project Management</span><span>Field Operations</span><span>KPI Dashboard</span></div>
+    </article>
+    <article class="t-item glass reveal">
+      <h3>Bot Developer — Freelance</h3>
+      <div class="t-meta">Upwork • Rising Talent • Identitas Terverifikasi</div>
+      <p>Jalur yang saya tekuni secara intensif saat ini: membantu klien mengotomatiskan pengumpulan data, pelaporan, dan notifikasi.</p>
+      <ul>
+        <li>Membangun bot Telegram untuk pelaporan dan notifikasi listing kripto</li>
+        <li>Web scraping &amp; ekstraksi data dengan Python (BeautifulSoup, DrissionPage, Playwright)</li>
+        <li>Integrasi API &amp; database: Telegram, Notion, dan Google Sheets</li>
+        <li>Script otomasi dan monitoring untuk tugas-tugas berulang</li>
+      </ul>
+      <div class="t-tags"><span>Telegram Bot</span><span>Web Scraping</span><span>Python Automation</span><span>API Integration</span></div>
+    </article>
+  </div>
+</div></section>
 
-            <div class="md:w-2/5 flex justify-center overflow-hidden">
-                <div class="js-animate-right relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-tr from-sky-500 via-purple-500 to-pink-600 shadow-xl overflow-hidden">
-                    <div class="w-full h-full bg-white dark:bg-darkBg rounded-full flex items-center justify-center overflow-hidden">
-                        <i class="fas fa-user-circle text-8xl text-gray-300 dark:text-slate-700"></i>
-                        <img src="photo.jpg" alt="Dimas Lukman" class="absolute inset-0 w-full h-full object-cover rounded-full" onerror="this.style.display='none'">
-                    </div>
-                </div>
-            </div>
-        </section>
+<section id="keahlian" style="padding-top:20px"><div class="container">
+  <span class="eyebrow">Kemampuan</span>
+  <h2 class="section-title">Keahlian</h2>
+  <p class="section-sub">Perpaduan keahlian operasi &amp; data yang matang dengan kemampuan teknis otomasi yang terus diasah.</p>
+  <div class="skills">
+    <div class="skill glass reveal"><b>Data &amp; Spreadsheet</b>
+      <div class="bar-row"><small><span>Excel &amp; Google Sheets</span><span>Mahir</span></small><div class="bar"><i style="width:92%"></i></div></div>
+      <div class="bar-row"><small><span>Spreadsheet Automation</span><span>Mahir</span></small><div class="bar"><i style="width:88%"></i></div></div>
+      <div class="bar-row"><small><span>Data Cleaning &amp; Data Entry</span><span>Mahir</span></small><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="bar-row"><small><span>KPI Dashboard</span><span>Mahir</span></small><div class="bar"><i style="width:85%"></i></div></div>
+      <p class="skill-note">Level di atas adalah penilaian mandiri untuk memberi gambaran cepat — detailnya bisa dilihat dari karya di bagian Portofolio.</p>
+    </div>
+    <div class="skill glass reveal"><b>Automation &amp; Development</b>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">Telegram Bot API</span><span class="chip">BeautifulSoup</span><span class="chip">DrissionPage</span><span class="chip">Playwright</span><span class="chip">Web Scraping</span><span class="chip">Notion API</span><span class="chip">Google Sheets API</span><span class="chip">Process Schedulers</span>
+      </div>
+    </div>
+    <div class="skill glass reveal"><b>Operations &amp; Support</b>
+      <div class="chips">
+        <span class="chip">Virtual Assistance</span><span class="chip">Lead Generation</span><span class="chip">CRM</span><span class="chip">Online Research</span><span class="chip">File Documentation</span><span class="chip">CRM Database</span><span class="chip">Field Operations</span><span class="chip">Team Leadership</span>
+      </div>
+    </div>
+  </div>
+</div></section>
 
-        <!-- ==================== ABOUT ME ==================== -->
-        <section id="about" class="space-y-8">
-            <div class="max-w-xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-darkHeading">About Me</h2>
-                <p class="text-sm text-purple-500 font-medium tracking-wider uppercase mt-1">Professional Journey</p>
-            </div>
+<section id="portofolio" style="padding-top:20px"><div class="container">
+  <span class="eyebrow">Karya Pilihan</span>
+  <h2 class="section-title">Portofolio</h2>
+  <p class="section-sub">Tujuh item portofolio yang juga tampil di profil Upwork saya — dari dashboard operasi lapangan sampai bot Telegram dan scraper data.</p>
+  <div class="filters" role="group" aria-label="Filter proyek">
+    <button class="filter active" data-f="semua" type="button">Semua</button>
+    <button class="filter" data-f="bot" type="button">Bot &amp; Scraping</button>
+    <button class="filter" data-f="data" type="button">Data &amp; Dashboard</button>
+  </div>
+  <div class="projects" id="projects">
+    <article class="project glass reveal" data-cat="data">
+      <div class="thumb" style="background:linear-gradient(135deg,#2563EB,#0EA5E9)"><span class="thumb-cat">Data &amp; Dashboard</span><span class="thumb-title">Field Operations Dashboard</span></div>
+      <div class="p-body"><p>Operasi lapangan sulit dipantau dari laporan manual yang tersebar. Dashboard KPI ini merangkum performa field operations dalam satu tampilan yang mudah dibaca manajemen.</p><div class="p-meta"><span>KPI Dashboard</span><span>Spreadsheet</span><span>Operations</span></div><a class="p-link" href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Lihat di Upwork ↗</a></div>
+    </article>
+    <article class="project glass reveal" data-cat="data">
+      <div class="thumb" style="background:linear-gradient(135deg,#0F766E,#0EA5E9)"><span class="thumb-cat">Data &amp; Dashboard</span><span class="thumb-title">CRM Database Management</span></div>
+      <div class="p-body"><p>Database CRM yang tidak terawat membuat follow-up pelanggan berantakan. Proyek ini merapikan, membersihkan, dan mengelola data CRM agar siap dipakai tim setiap hari.</p><div class="p-meta"><span>CRM</span><span>Data Cleaning</span><span>Database</span></div><a class="p-link" href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Lihat di Upwork ↗</a></div>
+    </article>
+    <article class="project glass reveal" data-cat="bot">
+      <div class="thumb" style="background:linear-gradient(135deg,#7C3AED,#2563EB)"><span class="thumb-cat">Bot &amp; Scraping</span><span class="thumb-title">Wikipedia Crypto Scraper</span></div>
+      <div class="p-body"><p>Mengumpulkan data kripto dari Wikipedia secara manual itu lambat dan rawan salah salin. Scraper Python ini mengekstraknya otomatis menjadi data terstruktur yang siap diolah.</p><div class="p-meta"><span>Python</span><span>Web Scraping</span><span>GitHub: portfolio-scraper</span></div><a class="p-link" href="https://github.com/dimaslukman-rgb" target="_blank" rel="noopener">Lihat di GitHub ↗</a></div>
+    </article>
+    <article class="project glass reveal" data-cat="bot">
+      <div class="thumb" style="background:linear-gradient(135deg,#0284C7,#7C3AED)"><span class="thumb-cat">Bot &amp; Scraping</span><span class="thumb-title">Crypto Listing Telegram Bot</span></div>
+      <div class="p-body"><p>Listing kripto baru mudah terlewat kalau harus memantau banyak sumber. Bot Telegram ini mengirimkan pemberitahuan listing langsung ke chat agar tidak ada momen yang tertinggal.</p><div class="p-meta"><span>Telegram Bot</span><span>Python</span><span>GitHub: portfolio-bot</span></div><a class="p-link" href="https://github.com/dimaslukman-rgb" target="_blank" rel="noopener">Lihat di GitHub ↗</a></div>
+    </article>
+    <article class="project glass reveal" data-cat="bot">
+      <div class="thumb" style="background:linear-gradient(135deg,#059669,#0284C7)"><span class="thumb-cat">Bot &amp; Scraping</span><span class="thumb-title">Telegram Reporting Bot</span></div>
+      <div class="p-body"><p>Pelaporan berkala sering terlambat karena disusun manual satu per satu. Bot ini mengotomatiskan penyusunan dan pengiriman laporan lewat Telegram.</p><div class="p-meta"><span>Telegram Bot</span><span>Reporting</span><span>Automation</span></div><a class="p-link" href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Lihat di Upwork ↗</a></div>
+    </article>
+    <article class="project glass reveal" data-cat="bot">
+      <div class="thumb" style="background:linear-gradient(135deg,#B45309,#DC2626)"><span class="thumb-cat">Bot &amp; Scraping</span><span class="thumb-title">AI Trading Radar</span></div>
+      <div class="p-body"><p>Memantau pergerakan pasar secara terus-menerus tidak mungkin dilakukan manual. Radar trading berbasis AI ini membantu menyaring sinyal pasar agar pantauan lebih terarah.</p><div class="p-meta"><span>AI</span><span>Monitoring</span><span>Python</span></div><a class="p-link" href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Lihat di Upwork ↗</a></div>
+    </article>
+    <article class="project glass reveal" data-cat="data">
+      <div class="thumb" style="background:linear-gradient(135deg,#334155,#0EA5E9)"><span class="thumb-cat">Data &amp; Dashboard</span><span class="thumb-title">Automation &amp; Monitoring Scripts</span></div>
+      <div class="p-body"><p>Tugas monitoring dan pekerjaan berulang menyita waktu setiap hari. Kumpulan script Python ini menjadwalkan dan menjalankannya otomatis di latar belakang.</p><div class="p-meta"><span>Python</span><span>Scheduler</span><span>Monitoring</span></div><a class="p-link" href="https://github.com/dimaslukman-rgb" target="_blank" rel="noopener">Lihat di GitHub ↗</a></div>
+    </article>
+  </div>
+</div></section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <div class="lg:col-span-8 space-y-6 text-lg">
-                    <p>
-                        I’m an administrative partner supporting businesses and founders worldwide. With a background in Business Administration & Computer Science coursework, I combine logical problem-solving with rigorous organization.
-                    </p>
-                    <p>
-                        My work revolves around reliability, structured formatting, and minimizing the time client operations take to execute. Whether managing CRM databases or cleaning messy spreadsheets, I aim to keep administrative tasks clean, simple, and error-free.
-                    </p>
-                </div>
+<section id="layanan" style="padding-top:20px"><div class="container">
+  <span class="eyebrow">Yang Bisa Saya Bantu</span>
+  <h2 class="section-title">Layanan</h2>
+  <p class="section-sub">Tiga layanan utama yang saya tawarkan untuk klien freelance — bisa dipesan lewat Upwork atau langsung via WhatsApp.</p>
+  <div class="grid3">
+    <article class="card glass reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/><path d="M8.5 11h5M11 8.5v5"/></svg></div>
+      <h3>Custom Web Scraping &amp; Data Extraction</h3>
+      <p>Pengambilan data dari website secara otomatis dan terstruktur — dari daftar produk, direktori, sampai data riset — siap pakai dalam format spreadsheet atau database.</p>
+      <p class="price">Tools: <b>BeautifulSoup • DrissionPage • Playwright</b></p>
+    </article>
+    <article class="card glass reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7h13M8 12h13M8 17h13"/><circle cx="4" cy="7" r="1.4" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="4" cy="17" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+      <h3>API &amp; Database Integration</h3>
+      <p>Menghubungkan aplikasi dan sumber data agar mengalir otomatis — misalnya hasil scraping langsung masuk ke Google Sheets, Notion, atau terkirim sebagai pesan Telegram.</p>
+      <p class="price">Integrasi: <b>Telegram • Notion • Google Sheets</b></p>
+    </article>
+    <article class="card glass reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="m9 10 2.5 2.5L9 15M13.5 15H17"/></svg></div>
+      <h3>Task Automation &amp; Scripting</h3>
+      <p>Otomasi tugas berulang dengan Python — pelaporan berkala, monitoring, pengolahan file, dan bot — supaya tim bisa fokus ke pekerjaan yang lebih penting.</p>
+      <p class="price">Fokus: <b>Python • Automation Bots • Schedulers</b></p>
+    </article>
+  </div>
 
-                <div class="lg:col-span-4 space-y-6">
-                    <div class="p-6 rounded-xl border border-gray-200 dark:border-slate-800 bg-card">
-                        <h3 class="font-bold text-lg text-gray-950 dark:text-white mb-4">Qualifications</h3>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex items-start gap-3">
-                                <span class="text-purple-500 mt-1"><i class="fas fa-graduation-cap"></i></span>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">Bachelor's Degree</h4>
-                                    <p class="text-gray-500 dark:text-darkText">Business Admin & Comp Science</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-pink-500 mt-1"><i class="fas fa-certificate"></i></span>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white">VA & Admin Certifications</h4>
-                                    <p class="text-gray-500 dark:text-darkText">Google Workspace & Data Entry</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div class="upwork-band glass reveal" style="margin-top:16px" aria-label="Profil Upwork terverifikasi">
+    <div>
+      <span class="eyebrow" style="margin-bottom:8px">Bukti Sosial Terverifikasi</span>
+      <h3>Profil Upwork</h3>
+      <p>Data berikut diambil dari profil Upwork publik saya — bukan testimoni karangan. Silakan verifikasi langsung di profilnya.</p>
+      <a class="btn btn-dark" style="margin-top:18px" href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Buka Profil Upwork ↗</a>
+    </div>
+    <div class="upwork-stats">
+      <div class="u-stat"><b>🏅 Rising Talent</b><span>Badge dari Upwork</span></div>
+      <div class="u-stat"><b><span class="stars" aria-hidden="true">★★★★</span><br>4.0 / 5</b><span>Rating dari 1 review</span></div>
+      <div class="u-stat"><b>✓ Terverifikasi</b><span>Identitas terverifikasi Upwork</span></div>
+      <div class="u-stat"><b>$10 / jam</b><span>Tarif • 1 job selesai</span></div>
+    </div>
+  </div>
+</div></section>
 
-        <!-- ==================== TECHNOLOGIES & TOOLS ==================== -->
-        <section id="technologies" class="space-y-8">
-            <div class="text-center max-w-xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-darkHeading">My Tech Stack</h2>
-                <p class="text-gray-500 dark:text-darkText mt-2">Tools I use daily to keep administrative workflows running smoothly</p>
-            </div>
+<section id="kontak" style="padding-top:20px"><div class="container">
+  <span class="eyebrow">Hubungi Saya</span>
+  <h2 class="section-title">Mari Bekerja Sama</h2>
+  <p class="section-sub">Punya pekerjaan data yang berulang, butuh dashboard, scraper, atau bot? Ceritakan kebutuhan Anda — pilih jalur kontak yang paling nyaman.</p>
+  <div class="contact">
+    <article class="card glass reveal">
+      <h3>Kontak Langsung</h3>
+      <p>Paling cepat lewat WhatsApp atau Telegram. Anda juga bisa memesan lewat Upwork atau halaman lynk.id saya.</p>
+      <div class="contact-list">
+        <a class="contact-item" href="https://wa.me/628119547505" target="_blank" rel="noopener">
+          <span class="ic" style="background:#22C55E"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .1 0 .7-.2 1.2Z"/></svg></span>
+          <span><b>WhatsApp — 0811 9547 505</b><small>atas nama Dimas Lukman</small></span><span class="arr">→</span>
+        </a>
+        <a class="contact-item" href="https://t.me/odiiiiii" target="_blank" rel="noopener">
+          <span class="ic" style="background:#0EA5E9"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 19 19.3c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2L7.6 13.2 3.2 11.8c-1-.3-1-1 .2-1.4l17.2-6.6c.8-.3 1.5.2 1.3.8Z"/></svg></span>
+          <span><b>Telegram — @odiiiiii</b><small>Chat cepat untuk diskusi proyek</small></span><span class="arr">→</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/dimaslukman/" target="_blank" rel="noopener">
+          <span class="ic" style="background:#2563EB"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.6H3.6V21h3.3V8.6ZM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM21 13.4c0-3.2-1.7-5-4.3-5-1.7 0-2.6.8-3.1 1.5V8.6H10.3V21h3.3v-6.6c0-1.4.6-2.2 1.9-2.2 1.2 0 1.8.8 1.8 2.2V21H21v-7.6Z"/></svg></span>
+          <span><b>LinkedIn — /in/dimaslukman</b><small>Profil profesional lengkap</small></span><span class="arr">→</span>
+        </a>
+        <a class="contact-item" href="https://lynk.id/dunia5.0" target="_blank" rel="noopener">
+          <span class="ic" style="background:linear-gradient(135deg,#7C3AED,#EC4899)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+          <span><b>lynk.id/dunia5.0</b><small>Paket layanan &amp; semua tautan saya</small></span><span class="arr">→</span>
+        </a>
+      </div>
+      <div class="email-row">
+        <div class="email-box"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg><span id="emailText">dimaslukman@gmail.com</span></div>
+        <button class="btn btn-glass" id="copyBtn" type="button" style="min-height:48px">Salin Email</button>
+      </div>
+    </article>
+    <article class="card glass reveal">
+      <h3 style="margin-bottom:6px">Kirim Pesan via Email</h3>
+      <p style="margin-bottom:20px">Isi form ini, lalu aplikasi email Anda akan terbuka dengan pesan yang sudah terisi — tinggal tekan kirim.</p>
+      <form id="contactForm" novalidate>
+        <label for="fNama">Nama Anda</label>
+        <input id="fNama" type="text" name="nama" placeholder="cth. Budi Santoso" required autocomplete="name">
+        <label for="fEmail">Email Anda</label>
+        <input id="fEmail" type="email" name="email" placeholder="nama@email.com" required autocomplete="email">
+        <label for="fPesan">Kebutuhan Anda</label>
+        <textarea id="fPesan" name="pesan" rows="4" placeholder="Ceritakan proyek atau kebutuhan Anda — data apa, untuk apa, dan target waktunya..." required></textarea>
+        <button class="btn btn-primary" type="submit" style="width:100%">Kirim via Email
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-note" id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </article>
+  </div>
+</div></section>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 pt-6">
-                <!-- Tool 1 (Google Sheets) -->
-                <div class="flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-gray-100 dark:border-slate-800 text-center hover:scale-105 transition-custom h-40">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/55/91/dd/5591ddfe-81bf-8707-4db4-d6e3813ead3d/sheets_2026_ios-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-0-85-220.png/256x256bb.png" alt="" class="w-14 h-14 object-contain mb-3 rounded-2xl shadow-md">
-                    <span class="font-medium text-sm text-gray-900 dark:text-white">Google Sheets</span>
-                </div>
-                <!-- Tool 2 (MS Excel) -->
-                <div class="flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-gray-100 dark:border-slate-800 text-center hover:scale-105 transition-custom h-40">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8e/6d/be/8e6dbea7-48d3-5025-f046-9346a42e9cf0/AppIcon-0-0-1x_U007epad-0-1-0-0-sRGB-0-0-0-85-220.png/256x256bb.png" alt="" class="w-14 h-14 object-contain mb-3 rounded-2xl shadow-md">
-                    <span class="font-medium text-sm text-gray-900 dark:text-white">MS Excel</span>
-                </div>
-                <!-- Tool 3 (Notion) -->
-                <div class="flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-gray-100 dark:border-slate-800 text-center hover:scale-105 transition-custom h-40">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3e/47/fc/3e47fc9c-525c-0caa-9ff4-7e413626bdcb/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-85-220.png/256x256bb.png" alt="" class="w-14 h-14 object-contain mb-3 rounded-2xl shadow-md">
-                    <span class="font-medium text-sm text-gray-900 dark:text-white">Notion</span>
-                </div>
-                <!-- Tool 4 (Trello / Asana) -->
-                <div class="flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-gray-100 dark:border-slate-800 text-center hover:scale-105 transition-custom h-40">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/35/31/5e/35315e16-db2f-e88d-1821-6a1b8f67d936/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.png" alt="" class="w-14 h-14 object-contain mb-3 rounded-2xl shadow-md">
-                    <span class="font-medium text-sm text-gray-900 dark:text-white">Trello / Asana</span>
-                </div>
-                <!-- Tool 5 (Email Support) -->
-                <div class="flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-gray-100 dark:border-slate-800 text-center hover:scale-105 transition-custom h-40">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/83/87/42/8387429d-b63c-d5e9-9fb7-1933117f75d2/gmail_2026_ios-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-0-0-85-220.png/256x256bb.png" alt="" class="w-14 h-14 object-contain mb-3 rounded-2xl shadow-md">
-                    <span class="font-medium text-sm text-gray-900 dark:text-white">Email Support</span>
-                </div>
-                <!-- Tool 6 (AI Tools) -->
-                <div class="flex flex-col items-center justify-center p-6 rounded-xl bg-card border border-gray-100 dark:border-slate-800 text-center hover:scale-105 transition-custom h-40">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e6/c7/eb/e6c7eb69-ade8-00b8-3454-d359249c6a0a/AppIcon-0-0-1x_U007epad-0-0-0-1-0-P3-85-220.png/256x256bb.png" alt="" class="w-14 h-14 object-contain mb-3 rounded-2xl shadow-md">
-                    <span class="font-medium text-sm text-gray-900 dark:text-white">AI Tools</span>
-                </div>
-            </div>
-        </section>
+<footer><div class="container">
+  <div class="foot-links">
+    <a href="#tentang">Tentang</a><a href="#pengalaman">Pengalaman</a><a href="#portofolio">Portofolio</a><a href="#layanan">Layanan</a>
+    <a href="https://github.com/dimaslukman-rgb" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.upwork.com/freelancers/~01f52455267486cdd6" target="_blank" rel="noopener">Upwork</a>
+  </div>
+  © <span id="year"></span> Dimas Lukman Septiawan • Operations Support &amp; Data Specialist | Bot Developer • <a class="brand" href="https://www.linkedin.com/in/dimaslukman/" target="_blank" rel="noopener">LinkedIn</a>
+</div></footer>
 
-        <!-- ==================== PROJECTS ==================== -->
-        <section id="projects" class="space-y-8">
-            <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-darkHeading">Projects</h2>
-                <p class="text-gray-500 dark:text-darkText mt-2">Selected operational deliverables and administrative case studies</p>
-            </div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
-                <!-- Project 1 -->
-                <div class="flex flex-col justify-between p-6 rounded-xl bg-card border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-custom">
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-500">
-                            <i class="fas fa-inbox text-lg"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Inbox & Lead Optimization</h3>
-                        <p class="text-sm text-gray-500 dark:text-darkText leading-relaxed">
-                            Organized client corporate inbox. Implemented custom categorization templates and lead qualification flows, cutting time-to-first-response by 65%.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-700 flex justify-between items-center text-xs font-semibold text-gray-900 dark:text-white">
-                        <span>Lead Gen / CRM</span>
-                        <span class="text-sky-500">95% Verified Leads</span>
-                    </div>
-                </div>
+<script>
+document.documentElement.classList.add('js');
+var marqueeSkills=["Python Automation","Telegram Bot","Web Scraping","Google Sheets","Excel","KPI Dashboard","Data Cleaning","CRM"];
+var track=document.getElementById('track');
+track.innerHTML=[].concat(marqueeSkills,marqueeSkills).map(function(s){return '<span>'+s+'</span>'}).join('');
 
-                <!-- Project 2 -->
-                <div class="flex flex-col justify-between p-6 rounded-xl bg-card border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-custom">
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500">
-                            <i class="fas fa-database text-lg"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Mass Data Cleaning</h3>
-                        <p class="text-sm text-gray-500 dark:text-darkText leading-relaxed">
-                            Standardized a large dataset of customer records, corrected syntactic errors, normalized formats, and created a dynamic Sheets dashboard.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-700 flex justify-between items-center text-xs font-semibold text-gray-900 dark:text-white">
-                        <span>Google Sheets</span>
-                        <span class="text-purple-500">99% Accuracy</span>
-                    </div>
-                </div>
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){
+  var open=menu.classList.toggle('open');
+  burger.setAttribute('aria-expanded',open?'true':'false');
+  burger.setAttribute('aria-label',open?'Tutup menu navigasi':'Buka menu navigasi');
+});
+function closeMenu(){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Buka menu navigasi')}
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
+document.addEventListener('click',function(e){if(menu.classList.contains('open')&&!e.target.closest('nav')){closeMenu()}});
 
-                <!-- Project 3 -->
-                <div class="flex flex-col justify-between p-6 rounded-xl bg-card border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-custom">
-                    <div class="space-y-3">
-                        <div class="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-500">
-                            <i class="fas fa-calendar-check text-lg"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Calendar & Coordination</h3>
-                        <p class="text-sm text-gray-500 dark:text-darkText leading-relaxed">
-                            Structured multi-timezone scheduling for global consulting teams. Ensured zero scheduling conflicts over 6 consecutive months.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-100 dark:border-slate-700 flex justify-between items-center text-xs font-semibold text-gray-900 dark:text-white">
-                        <span>Scheduling</span>
-                        <span class="text-pink-500">Zero Overlaps</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+// Active nav on scroll
+var navMap={};
+menu.querySelectorAll('a[href^="#"]').forEach(function(a){navMap[a.getAttribute('href').slice(1)]=a});
+var secIO=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){menu.querySelectorAll('a').forEach(function(a){a.classList.remove('active')});var link=navMap[en.target.id];if(link)link.classList.add('active')}})},{rootMargin:'-40% 0px -55% 0px'});
+['beranda','tentang','pengalaman','keahlian','portofolio','layanan','kontak'].forEach(function(id){var el=document.getElementById(id);if(el)secIO.observe(el)});
 
-        <!-- ==================== CONTACT ==================== -->
-        <section id="contact" class="space-y-8">
-            <div class="text-center max-w-xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-darkHeading">Contact</h2>
-                <p class="text-gray-500 dark:text-darkText mt-2">Have a project or need administrative support? Let's talk.</p>
-            </div>
+var revealEls=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}})},{threshold:.05,rootMargin:'0px 0px 12% 0px'});
+  revealEls.forEach(function(el){io.observe(el)});
+  /* Safety: never leave content hidden — reveal everything shortly after load
+     (covers full-page captures and browsers that don't fire the observer). */
+  setTimeout(function(){revealEls.forEach(function(el){el.classList.add('show')})},1400);
+}else{
+  revealEls.forEach(function(el){el.classList.add('show')});
+}
 
-            <div class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                <a href="mailto:dimaslukman@gmail.com" class="p-6 rounded-xl border border-gray-200 dark:border-slate-800 bg-card hover:border-sky-500 dark:hover:border-sky-500 transition-custom flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg bg-sky-500/10 text-sky-500 flex items-center justify-center text-xl">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div>
-                        <span class="text-xs text-gray-400 font-medium">Email</span>
-                        <p class="font-semibold text-sm truncate text-gray-900 dark:text-white">dimaslukman@gmail.com</p>
-                    </div>
-                </a>
+document.querySelectorAll('.filter').forEach(function(btn){btn.addEventListener('click',function(){
+  document.querySelectorAll('.filter').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  var f=btn.getAttribute('data-f');
+  document.querySelectorAll('.project').forEach(function(p){
+    var show=(f==='semua'||p.getAttribute('data-cat')===f);
+    p.classList.toggle('hidden',!show);
+    if(show){p.classList.add('show')}
+  });
+})});
 
-                <a href="tel:+628119547505" class="p-6 rounded-xl border border-gray-200 dark:border-slate-800 bg-card hover:border-purple-500 dark:hover:border-purple-500 transition-custom flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div>
-                        <span class="text-xs text-gray-400 font-medium">Phone</span>
-                        <p class="font-semibold text-sm truncate text-gray-900 dark:text-white">+62 811-9547-505</p>
-                    </div>
-                </a>
-            </div>
-        </section>
+var toast=document.getElementById('toast'),toastTimer=null;
+function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.classList.remove('show')},2600)}
 
-    </main>
+document.getElementById('copyBtn').addEventListener('click',function(){
+  var email=document.getElementById('emailText').textContent.trim();
+  function done(){showToast('Email tersalin: '+email)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(done).catch(function(){fallback()});
+  }else{fallback()}
+  function fallback(){
+    var ta=document.createElement('textarea');ta.value=email;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');done()}catch(e){showToast('Salin manual: '+email)}
+    document.body.removeChild(ta);
+  }
+});
 
-    <!-- Footer -->
-    <footer class="w-full border-t border-gray-200 dark:border-slate-800 py-10 mt-16 text-center text-xs text-gray-400">
-        <p>&copy; 2026 Dimas Lukman Septiawan. Design inspired by React Minimalist template.</p>
-    </footer>
-
-    <!-- GSAP Initialization Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.gsap) {
-                const tl = gsap.timeline();
-
-                // Entry animation for hero texts (sliding from left)
-                tl.from(".js-animate-left", {
-                    x: "-100%",
-                    opacity: 0,
-                    duration: 1.5,
-                    ease: "power3.out"
-                });
-
-                // Entry animation for hero image (sliding from right)
-                tl.from(".js-animate-right", {
-                    x: "100%",
-                    opacity: 0,
-                    duration: 1.5,
-                    ease: "power3.out"
-                }, "-=1.2"); // overlap slightly with previous animation
-            }
-        });
-    </script>
-
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var nama=document.getElementById('fNama').value.trim();
+  var email=document.getElementById('fEmail').value.trim();
+  var pesan=document.getElementById('fPesan').value.trim();
+  var msg=document.getElementById('formMsg');
+  if(!nama||!email||!pesan){msg.textContent='Mohon lengkapi nama, email, dan pesan terlebih dahulu.';msg.style.color='#DC2626';return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='Format email sepertinya belum tepat — periksa lagi ya.';msg.style.color='#DC2626';return}
+  msg.style.color='';msg.textContent='Membuka aplikasi email Anda…';
+  var subject=encodeURIComponent('Pesan dari Portofolio — '+nama);
+  var body=encodeURIComponent('Halo Dimas,\n\n'+pesan+'\n\n—\nNama: '+nama+'\nEmail: '+email);
+  var mailLink=document.createElement('a');
+  mailLink.href='mailto:dimaslukman@gmail.com?subject='+subject+'&body='+body;
+  document.body.appendChild(mailLink);mailLink.click();mailLink.remove();
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
